@@ -58,6 +58,7 @@ const MainHeader = styled.div`
   padding: 18px 32px;
   height: 72px;
   border-bottom: 1px solid ${COLORS.gray[300]};
+  overflow: auto hidden;
 
   @media${QUERIES.tabletAndDown} {
     display: none;
@@ -99,7 +100,7 @@ const MobileSearchButton = styled(UnstyledButton)`
 
 const Nav = styled.nav`
   display: flex;
-  gap: 48px;
+  gap: clamp(1.5rem, 8vw - 3.5rem, 3rem);
   margin: 0px 48px;
 `;
 
