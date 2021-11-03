@@ -1,18 +1,15 @@
-import React from 'react';
-import styled from 'styled-components/macro';
+import React from "react";
+import styled from "styled-components/macro";
 
-import { COLORS, WEIGHTS } from '../../constants';
-import Logo from '../Logo';
-import SuperHeader from '../SuperHeader';
-import MobileMenu from '../MobileMenu';
+import { COLORS, WEIGHTS, QUERIES } from "../../constants";
+import Logo from "../Logo";
+import SuperHeader from "../SuperHeader";
+import MobileMenu from "../MobileMenu";
+import UnstyledButton from "../UnstyledButton";
+import Icon from "../Icon";
 
 const Header = () => {
   const [showMobileMenu, setShowMobileMenu] = React.useState(false);
-
-  // For our mobile hamburger menu, we'll want to use a button
-  // with an onClick handler, something like this:
-  //
-  // <button onClick={() => setShowMobileMenu(true)}>
 
   return (
     <header>
@@ -32,6 +29,21 @@ const Header = () => {
         <Side />
       </MainHeader>
 
+      <MobileHeader>
+        <MobileLogoWrapper>
+          <Logo />
+        </MobileLogoWrapper>
+        <UnstyledButton>
+          <Icon id="shopping-bag" strokeWidth={2} />
+        </UnstyledButton>
+        <MobileSearchButton>
+          <Icon id="search" strokeWidth={2} />
+        </MobileSearchButton>
+        <UnstyledButton onClick={() => setShowMobileMenu(true)}>
+          <Icon id="menu" strokeWidth={2} />
+        </UnstyledButton>
+      </MobileHeader>
+
       <MobileMenu
         isOpen={showMobileMenu}
         onDismiss={() => setShowMobileMenu(false)}
@@ -46,6 +58,43 @@ const MainHeader = styled.div`
   padding: 18px 32px;
   height: 72px;
   border-bottom: 1px solid ${COLORS.gray[300]};
+
+  @media${QUERIES.tabletAndDown} {
+    display: none;
+  }
+`;
+
+const MobileHeader = styled.div`
+  display: none;
+
+  @media${QUERIES.tabletAndDown} {
+    border-top: 4px solid ${COLORS.gray[900]};
+    display: flex;
+    align-items: center;
+    padding: 18px 32px;
+    height: 72px;
+    border-bottom: 1px solid ${COLORS.gray[300]};
+  }
+
+  @media${QUERIES.phoneAndDown} {
+    padding: 18px 16px;
+  }
+`;
+
+const MobileLogoWrapper = styled.div`
+  margin-right: auto;
+`;
+
+const MobileSearchButton = styled(UnstyledButton)`
+  @media${QUERIES.tabletAndDown} {
+    margin-left: 32px;
+    margin-right: 32px;
+  }
+
+  @media${QUERIES.phoneAndDown} {
+    margin-left: 24px;
+    margin-right: 24px;
+  }
 `;
 
 const Nav = styled.nav`
