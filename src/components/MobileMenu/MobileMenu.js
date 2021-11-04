@@ -3,7 +3,7 @@ import React from "react";
 import styled from "styled-components/macro";
 import { DialogOverlay, DialogContent } from "@reach/dialog";
 
-import { QUERIES, COLORS, WEIGHTS } from "../../constants";
+import { QUERIES } from "../../constants";
 
 import UnstyledButton from "../UnstyledButton";
 import Icon from "../Icon";
@@ -36,8 +36,7 @@ const MobileMenu = ({ isOpen, onDismiss }) => {
 };
 
 const Overlay = styled(DialogOverlay)`
-  background: ${COLORS.gray["700"]};
-  background: hsl(220 5% 40% / 0.8);
+  background: hsl(var(--color-gray-700-base) / 0.8);
   position: fixed;
   top: 0;
   bottom: 0;
@@ -52,7 +51,7 @@ const Overlay = styled(DialogOverlay)`
 const Content = styled(DialogContent)`
   width: clamp(300px, 50%, 400px);
   height: 100%;
-  background: ${COLORS.white};
+  background: var(--color-white);
   margin-left: auto;
   padding: 32px;
 
@@ -72,15 +71,15 @@ const NavMenu = styled.nav`
 
 const NavLink = styled.a`
   font-size: ${18 / 16}rem;
-  font-weight: ${WEIGHTS.medium};
+  font-weight: var(--weight-medium);
   line-height: 2;
   text-transform: uppercase;
   text-decoration: none;
-  color: ${COLORS.gray["900"]};
+  color: var(--color-gray-900);
 
   &:hover,
   &:focus {
-    color: ${COLORS.secondary};
+    color: var(--color-secondary);
     outline: none;
   }
 `;
@@ -92,14 +91,14 @@ const Footer = styled.footer`
 
 const FooterLink = styled.a`
   font-size: ${14 / 16}rem;
-  font-weight: ${WEIGHTS.normal};
+  font-weight: var(--weight-normal);
   line-height: 2;
   text-decoration: none;
-  color: ${COLORS.gray["700"]};
+  color: var(--color-gray-700);
 
   &:hover,
   &:focus {
-    color: ${COLORS.secondary};
+    color: var(--color-secondary);
     outline: none;
   }
 `;

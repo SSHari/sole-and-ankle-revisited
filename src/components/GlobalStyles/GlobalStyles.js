@@ -1,4 +1,5 @@
-import { createGlobalStyle } from 'styled-components/macro';
+import { createGlobalStyle } from "styled-components/macro";
+import { buildColorRules, WEIGHTS } from "../../constants";
 
 const GlobalStyles = createGlobalStyle`
 /* http://meyerweb.com/eric/tools/css/reset/
@@ -71,6 +72,14 @@ html {
     Silence the warning about missing Reach Dialog styles
   */
   --reach-dialog: 1;
+  
+  /* COLOR Variables */
+  ${buildColorRules()}
+
+  /* WEIGHT Variables */
+  --weight-normal: ${WEIGHTS.normal};
+  --weight-medium: ${WEIGHTS.medium};
+  --weight-bold: ${WEIGHTS.bold};
 }
 
 html, body, #root {
